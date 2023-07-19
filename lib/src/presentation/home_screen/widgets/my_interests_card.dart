@@ -46,8 +46,8 @@ class _MyInterestsCardState extends State<MyInterestsCard>
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: Sizes.deviceWidth * .90,
-      height: Sizes.deviceHeight * .70,
+      width: Sizes.deviceWidth * .9,
+      height: Sizes.deviceHeight * .7,
       child: Card(
         color: AppColors.yellow100,
         child: Padding(
