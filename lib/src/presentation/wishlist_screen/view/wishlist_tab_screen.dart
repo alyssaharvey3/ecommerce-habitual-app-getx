@@ -100,6 +100,10 @@ class _WishlistTabScreenState extends State<WishlistTabScreen> {
                             'https://assets.mmsrg.com/isr/166325/c1/-/ASSET_MMS_104146487/fee_786_587_png',
                         itemName: '2014 Forest Hills Drive',
                         price: 49.99,
+                        moreOptionsTap: () {},
+                        onCardTap: () {},
+                        onAddToCart: () {},
+                        onLikeTap: () {},
                       ),
                       gapH32,
                       WishlistCard(
@@ -108,6 +112,10 @@ class _WishlistTabScreenState extends State<WishlistTabScreen> {
                             'https://assets.bose.com/content/dam/cloudassets/Bose_DAM/Web/consumer_electronics/global/products/headphones/qc35_ii/product_silo_images/qc35_ii_black_EC_hero.png/jcr:content/renditions/cq5dam.web.1280.1280.png',
                         itemName: 'Bose Noise Cancelling Headphones 700',
                         price: 400.99,
+                        moreOptionsTap: () {},
+                        onCardTap: () {},
+                        onAddToCart: () {},
+                        onLikeTap: () {},
                       ),
                       gapH32,
                       PrimaryOutlinedButton(
