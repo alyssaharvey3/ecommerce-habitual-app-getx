@@ -16,12 +16,20 @@ class WishlistCard extends StatelessWidget {
     required this.imageUrl,
     required this.itemName,
     required this.price,
+    this.onCardTap,
+    this.onLikeTap,
+    this.onAddToCart,
+    this.moreOptionsTap,
   });
 
   final String listName;
   final String imageUrl;
   final String itemName;
   final double price;
+  final VoidCallback? onCardTap;
+  final VoidCallback? moreOptionsTap;
+  final VoidCallback? onLikeTap;
+  final VoidCallback? onAddToCart;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +59,7 @@ class WishlistCard extends StatelessWidget {
                     assetPath: AppIcons.moreOptionsIcon,
                     color: AppColors.neutral400,
                   ),
-                  onPressed: () {},
+                  onPressed: moreOptionsTap,
                 ),
               ],
             ),
@@ -62,7 +70,8 @@ class WishlistCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(Sizes.p8),
             child: InkWell(
-              onTap: () {},
+              borderRadius: BorderRadius.circular(Sizes.p8),
+              onTap: onCardTap,
               child: Row(
                 children: [
                   Expanded(
@@ -95,7 +104,7 @@ class WishlistCard extends StatelessWidget {
                             ),
                             PrimaryIconButton(
                               icon: AppIcons.favoriteIcon,
-                              onPressed: () {},
+                              onPressed: onLikeTap,
                             ),
                           ],
                         ),
@@ -112,7 +121,7 @@ class WishlistCard extends StatelessWidget {
                         PrimaryButton(
                           labelColor: AppColors.neutral800,
                           buttonLabel: 'Add to cart',
-                          onPressed: () {},
+                          onPressed: onAddToCart,
                         ),
                       ],
                     ),
