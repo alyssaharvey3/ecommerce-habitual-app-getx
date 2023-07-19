@@ -40,7 +40,7 @@ class _WishlistTabScreenState extends State<WishlistTabScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isLoggedIn = true.obs;
+    const isLoggedIn = true;
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
@@ -81,7 +81,7 @@ class _WishlistTabScreenState extends State<WishlistTabScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Visibility(
-                  visible: isLoggedIn.value,
+                  visible: isLoggedIn,
                   replacement: EmptyStateCard(
                     hasDescription: false,
                     cardImage: AppAssets.wishlistEmpty,

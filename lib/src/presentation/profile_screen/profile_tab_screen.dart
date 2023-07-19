@@ -48,7 +48,7 @@ class _ProfileTabScreenState extends State<ProfileTabScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isLoggedIn = true.obs;
+    const isLoggedIn = true;
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
@@ -95,7 +95,7 @@ class _ProfileTabScreenState extends State<ProfileTabScreen> {
                 ),
                 gapH24,
                 Visibility(
-                  visible: isLoggedIn.value,
+                  visible: isLoggedIn,
                   replacement: EmptyStateCard(
                     hasDescription: true,
                     cardImage: AppAssets.profileEmpty,

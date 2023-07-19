@@ -42,7 +42,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
 
   @override
   Widget build(BuildContext context) {
-    const isLoggedIn = false;
+    const isLoggedIn = true;
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) =>
@@ -167,7 +167,10 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                   ),
                 ),
                 gapH32,
-                if (isLoggedIn) const MyInterestsCard(),
+                const Visibility(
+                  visible: isLoggedIn,
+                  child: MyInterestsCard(),
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: Sizes.p24,
