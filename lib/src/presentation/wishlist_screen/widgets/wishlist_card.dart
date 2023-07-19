@@ -77,7 +77,7 @@ class WishlistCard extends StatelessWidget {
                   ),
                   gapW16,
                   Expanded(
-                    flex: 3,
+                    flex: 2,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,15 +85,17 @@ class WishlistCard extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              itemName,
-                              style: Get.textTheme.displayMedium,
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 2,
+                            Expanded(
+                              child: Text(
+                                itemName,
+                                style: Get.textTheme.displayMedium,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
+                              ),
                             ),
-                            Icon(
-                              Icons.favorite,
-                              color: AppColors.red500,
+                            PrimaryIconButton(
+                              icon: AppIcons.favoriteIcon,
+                              onPressed: () {},
                             ),
                           ],
                         ),
