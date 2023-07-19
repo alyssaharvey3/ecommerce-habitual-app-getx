@@ -20,7 +20,7 @@ class SignInScreen extends StatelessWidget {
           child: SingleChildScrollView(
             padding: const EdgeInsets.fromLTRB(
               Sizes.p24,
-              Sizes.p48,
+              Sizes.p24,
               Sizes.p24,
               0,
             ),
