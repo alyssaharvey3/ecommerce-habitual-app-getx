@@ -131,6 +131,7 @@ class _ProfileTabScreenState extends State<ProfileTabScreen> {
                       OrderCard(
                         onTap: () {},
                       ),
+                      gapH16,
                       //* User Interests
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
