@@ -36,8 +36,12 @@ class OrderCard extends StatelessWidget {
                 children: [
                   Expanded(
                     child: CachedNetworkImage(
-                      placeholder: (_, url) => const Center(
-                        child: CircularProgressIndicator.adaptive(),
+                      placeholder: (_, url) => Center(
+                        child: CircularProgressIndicator.adaptive(
+                          valueColor: AlwaysStoppedAnimation(
+                            AppColors.neutral800,
+                          ),
+                        ),
                       ),
                       imageUrl:
                           'https://cdn-reichelt.de/bilder/web/xxl_ws/E910/SONY_9399506_02.png',
