@@ -101,6 +101,20 @@ class _WishlistTabScreenState extends State<WishlistTabScreen> {
                         itemName: '2014 Forest Hills Drive',
                         price: 49.99,
                       ),
+                      gapH32,
+                      WishlistCard(
+                        listName: wishlistNames[1],
+                        imageUrl:
+                            'https://assets.bose.com/content/dam/cloudassets/Bose_DAM/Web/consumer_electronics/global/products/headphones/qc35_ii/product_silo_images/qc35_ii_black_EC_hero.png/jcr:content/renditions/cq5dam.web.1280.1280.png',
+                        itemName: 'Bose Noise Cancelling Headphones 700',
+                        price: 400.99,
+                      ),
+                      gapH32,
+                      PrimaryOutlinedButton(
+                        hasText: true,
+                        title: '+ Create a wishlist',
+                        onPressed: () {},
+                      ),
                     ],
                   ),
                 ),
