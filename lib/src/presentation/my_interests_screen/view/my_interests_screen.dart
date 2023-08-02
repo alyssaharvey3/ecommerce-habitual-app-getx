@@ -38,7 +38,8 @@ class _MyInterestsScreenState extends State<MyInterestsScreen> {
   ];
 
   final trendingInGamingImages = [
-    'https://tech4u.co.mz/wp-content/uploads/2023/01/cq5dam.web_.1280.1280.png',
+    // 'https://tech4u.co.mz/wp-content/uploads/2023/01/cq5dam.web_.1280.1280.png',
+    // 'https://images.csmonitor.com/csm/2014/06/hobbit.png?alias=standard_900x600nc',
     'https://icegames.co/image/cache/catalog/1212121219/dualsense-ps5-controller-midnight-black-accessory-front-550x550.png',
     // 'https://images.csmonitor.com/csm/2014/06/hobbit.png?alias=standard_900x600nc',
     'https://multimedia.bbycastatic.ca/multimedia/products/1500x1500/171/17145/17145330_8.png',
@@ -145,21 +146,44 @@ class _MyInterestsScreenState extends State<MyInterestsScreen> {
                       )
                     ],
                   ),
-                  StaggeredGrid.count(
-                    crossAxisSpacing: Sizes.p16,
-                    mainAxisSpacing: Sizes.p16,
-                    crossAxisCount: 2,
-                    children: [
-                      ...List.generate(
-                        trendingInGamingImages.length,
-                        (index) => DealsCard(
-                          imageUrl: trendingInGamingImages[index],
-                          onCardTap: () {},
-                          onLikeTap: () {},
-                        ),
-                      ),
-                    ],
+                  GridView.builder(
+                    // padding: const EdgeInsets.fromLTRB(
+                    //   Sizes.p24,
+                    //   Sizes.p16,
+                    //   Sizes.p24,
+                    //   Sizes.p4,
+                    // ),
+                    itemCount: trendingInGamingImages.length,
+                    primary: false,
+                    shrinkWrap: true,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      // mainAxisSpacing: Sizes.p16,
+                      crossAxisSpacing: Sizes.p12,
+                      childAspectRatio: 9 / 10,
+                    ),
+                    itemBuilder: (_, index) => DealsCard(
+                      imageUrl: trendingInGamingImages[index],
+                      onCardTap: () {},
+                      onLikeTap: () {},
+                    ),
                   ),
+                  // GridView.count(
+                  //   crossAxisSpacing: Sizes.p16,
+                  //   mainAxisSpacing: Sizes.p16,
+                  //   crossAxisCount: 2,
+                  //   children: [
+                  //     ...List.generate(
+                  //       trendingInGamingImages.length,
+                  //       (index) => DealsCard(
+                  //         imageUrl: trendingInGamingImages[index],
+                  //         onCardTap: () {},
+                  //         onLikeTap: () {},
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                   gapH24,
                   Row(
                     children: [
@@ -175,21 +199,44 @@ class _MyInterestsScreenState extends State<MyInterestsScreen> {
                       )
                     ],
                   ),
-                  StaggeredGrid.count(
-                    crossAxisSpacing: Sizes.p16,
-                    mainAxisSpacing: Sizes.p16,
-                    crossAxisCount: 2,
-                    children: [
-                      ...List.generate(
-                        trendingInReadingImages.length,
-                        (index) => DealsCard(
-                          imageUrl: trendingInReadingImages[index],
-                          onCardTap: () {},
-                          onLikeTap: () {},
-                        ),
-                      ),
-                    ],
+                  GridView.builder(
+                    // padding: const EdgeInsets.fromLTRB(
+                    //   Sizes.p24,
+                    //   Sizes.p16,
+                    //   Sizes.p24,
+                    //   Sizes.p4,
+                    // ),
+                    itemCount: trendingInReadingImages.length,
+                    primary: false,
+                    shrinkWrap: true,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      // mainAxisSpacing: Sizes.p16,
+                      crossAxisSpacing: Sizes.p12,
+                      childAspectRatio: 9 / 10,
+                    ),
+                    itemBuilder: (_, index) => DealsCard(
+                      imageUrl: trendingInReadingImages[index],
+                      onCardTap: () {},
+                      onLikeTap: () {},
+                    ),
                   ),
+                  // StaggeredGrid.count(
+                  //   crossAxisSpacing: Sizes.p16,
+                  //   mainAxisSpacing: Sizes.p16,
+                  //   crossAxisCount: 2,
+                  //   children: [
+                  //     ...List.generate(
+                  //       trendingInReadingImages.length,
+                  //       (index) => DealsCard(
+                  //         imageUrl: trendingInReadingImages[index],
+                  //         onCardTap: () {},
+                  //         onLikeTap: () {},
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                   gapH8,
                 ],
               ),
