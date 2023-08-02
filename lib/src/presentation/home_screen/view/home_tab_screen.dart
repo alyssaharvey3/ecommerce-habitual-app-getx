@@ -3,12 +3,14 @@ import 'package:get/get.dart';
 import 'package:habitual/src/common_widgets/common_widgets_export.dart';
 import 'package:habitual/src/common_widgets/svg_asset.dart';
 import 'package:habitual/src/presentation/home_screen/widgets/deals_card.dart';
-import 'package:habitual/src/presentation/home_screen/widgets/home_category_card.dart';
 import 'package:habitual/src/presentation/home_screen/widgets/my_interests_card.dart';
 import 'package:habitual/src/routes/app_pages.dart';
 
 import '../../../core/core_export.dart';
+import '../widgets/home_category_card.dart';
 import '../widgets/main_card.dart';
+
+enum ScrollDirection { forward, backward }
 
 class HomeTabScreen extends StatefulWidget {
   const HomeTabScreen({super.key});
@@ -18,6 +20,44 @@ class HomeTabScreen extends StatefulWidget {
 }
 
 class _HomeTabScreenState extends State<HomeTabScreen> {
+  final _scrollController = ScrollController();
+
+  void _scrollToTheNextItemView({
+    ScrollDirection scrollDirection = ScrollDirection.forward,
+  }) async {
+    if (scrollDirection == ScrollDirection.forward) {
+      if (_scrollController.position.pixels <
+              _scrollController.position.maxScrollExtent &&
+          !_scrollController.position.outOfRange) {
+        await _scrollController.animateTo(
+          _scrollController.position.pixels + 150,
+          duration: const Duration(
+            milliseconds: 300,
+          ),
+          curve: Curves.easeOut,
+        );
+      }
+    } else {
+      if (_scrollController.position.pixels >
+              _scrollController.position.minScrollExtent &&
+          !_scrollController.position.outOfRange) {
+        await _scrollController.animateTo(
+          _scrollController.position.pixels - 150,
+          duration: const Duration(
+            milliseconds: 300,
+          ),
+          curve: Curves.easeOut,
+        );
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   final trendingCardColors = [
     AppColors.blue300,
     AppColors.green300,
@@ -38,6 +78,19 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
     'https://images.csmonitor.com/csm/2014/06/hobbit.png?alias=standard_900x600nc',
     'https://multimedia.bbycastatic.ca/multimedia/products/1500x1500/171/17145/17145330_8.png',
     'https://media2.sport-bittl.com/images/product_images/original_images/27826167676a_Birkenstock_Arizona_Schuh_He_schwarz.png',
+  ];
+
+  final categoriesTitles = [
+    AppTitles.categoryCard1Title,
+    AppTitles.categoryCard2Title,
+    AppTitles.categoryCard3Title,
+    AppTitles.categoryCard4Title,
+  ];
+  final categoriesColors = [
+    AppColors.red300,
+    AppColors.purple300,
+    AppColors.blue300,
+    AppColors.green300,
   ];
 
   @override
@@ -95,11 +148,12 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                       ),
                       PrimaryIconButton(
                         icon: AppIcons.iOSLeftArrowIcon,
-                        onPressed: () {},
+                        onPressed: () => _scrollToTheNextItemView(
+                            scrollDirection: ScrollDirection.backward),
                       ),
                       PrimaryIconButton(
                         icon: AppIcons.iOSRightArrowIcon,
-                        onPressed: () {},
+                        onPressed: _scrollToTheNextItemView,
                       ),
                     ],
                   ),
@@ -108,6 +162,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                 SizedBox(
                   height: Sizes.deviceHeight * .45,
                   child: ListView.separated(
+                    controller: _scrollController,
                     scrollDirection: Axis.horizontal,
                     padding: const EdgeInsets.symmetric(
                       horizontal: Sizes.p24,
@@ -126,6 +181,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                   ),
                 ),
                 gapH32,
+                // * Deals
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: Sizes.p24,
@@ -156,7 +212,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                       horizontal: Sizes.p24,
                     ),
                     itemCount: dealsImages.length,
-                    separatorBuilder: (_, index) => gapW16,
+                    separatorBuilder: (_, __) => gapW16,
                     itemBuilder: (_, index) => DealsCard(
                       imageUrl: dealsImages[index],
                       onCardTap: () => Get.toNamed(
@@ -167,70 +223,38 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                   ),
                 ),
                 gapH32,
+                // * My Interests
                 const Visibility(
                   visible: isLoggedIn,
                   child: MyInterestsCard(),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: Sizes.p24,
-                    vertical: Sizes.p16,
+                // * Cards Section
+                GridView.builder(
+                  padding: const EdgeInsets.fromLTRB(
+                    Sizes.p24,
+                    Sizes.p16,
+                    Sizes.p24,
+                    Sizes.p4,
                   ),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: HomeCategoryCard(
-                              width: Sizes.deviceWidth * .50,
-                              height: Sizes.deviceHeight * .20,
-                              title: AppTitles.categoryCard1Title,
-                              buttonPressed: () {},
-                              cardPressed: () {},
-                            ),
-                          ),
-                          Expanded(
-                            child: HomeCategoryCard(
-                              width: Sizes.deviceWidth * .50,
-                              height: Sizes.deviceHeight * .20,
-                              title: AppTitles.categoryCard2Title,
-                              color: AppColors.red300,
-                              buttonPressed: () {},
-                              cardPressed: () {},
-                            ),
-                          ),
-                        ],
-                      ),
-                      gapH16,
-                      Row(
-                        children: [
-                          Expanded(
-                            child: HomeCategoryCard(
-                              width: Sizes.deviceWidth * .50,
-                              height: Sizes.deviceHeight * .20,
-                              title: AppTitles.categoryCard3Title,
-                              color: AppColors.blue300,
-                              buttonPressed: () {},
-                              cardPressed: () {},
-                            ),
-                          ),
-                          Expanded(
-                            child: HomeCategoryCard(
-                              width: Sizes.deviceWidth * .50,
-                              height: Sizes.deviceHeight * .20,
-                              title: AppTitles.categoryCard4Title,
-                              color: AppColors.green300,
-                              buttonPressed: () => Get.toNamed(
-                                AppRoutes.categoriesRoute,
-                              ),
-                              cardPressed: () => Get.toNamed(
-                                AppRoutes.categoriesRoute,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                  itemCount: categoriesTitles.length,
+                  primary: false,
+                  shrinkWrap: true,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    // mainAxisSpacing: Sizes.p16,
+                    crossAxisSpacing: Sizes.p12,
+                    childAspectRatio: 9 / 10,
+                  ),
+                  itemBuilder: (_, index) => HomeCategoryCard(
+                    color: categoriesColors[index],
+                    title: categoriesTitles[index],
+                    onTap: () {
+                      if (index == 3) {
+                        Get.toNamed(
+                          AppRoutes.categoriesRoute,
+                        );
+                      }
+                    },
                   ),
                 ),
               ],
