@@ -160,7 +160,7 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
                 ),
                 gapH16,
                 SizedBox(
-                  height: Sizes.deviceHeight * .45,
+                  height: Sizes.deviceHeight * .48,
                   child: ListView.separated(
                     controller: _scrollController,
                     scrollDirection: Axis.horizontal,

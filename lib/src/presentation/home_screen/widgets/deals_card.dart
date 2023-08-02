@@ -68,7 +68,7 @@ class DealsCard extends StatelessWidget {
                       children: [
                         gapH4,
                         SizedBox(
-                          width: Sizes.deviceWidth * .4,
+                          width: Sizes.deviceWidth * .3,
                           child: Text(
                             'Bose Noise Cancellation bla bla bla bla bla bla bla',
                             style: Get.textTheme.displayMedium,
