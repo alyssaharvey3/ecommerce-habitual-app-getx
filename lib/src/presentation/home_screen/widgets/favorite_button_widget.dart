@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:habitual/src/common_widgets/svg_asset.dart';
 import 'package:habitual/src/core/core_export.dart';
 
-class LikeButtonWidget extends StatelessWidget {
-  const LikeButtonWidget({
+class FavoriteButton extends StatelessWidget {
+  const FavoriteButton({
     super.key,
     this.width,
     this.height,
